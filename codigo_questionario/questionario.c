@@ -14,14 +14,6 @@ typedef struct
     char resposta;
 } Pergunta;
 
-char getResponse(char *question, char *options)
-{
-    char answer[MAX_CHAR];
-    printf("%s\n%s", question, options);
-    fgets(answer, sizeof(answer), stdin);
-    return answer[0];
-}
-
 void apresentarPergunta(Pergunta pergunta, FILE *arquivo, int numeroQuestao)
 {
     char opcao;
@@ -33,10 +25,11 @@ void apresentarPergunta(Pergunta pergunta, FILE *arquivo, int numeroQuestao)
     }
 
     // Obter resposta do usuário
-    opcao = getResponse("", "");
+    printf("Sua resposta (A, B, C ou D): ");
+    scanf(" %c", &opcao);
 
     // Armazenar no arquivo CSV
-    fprintf(arquivo, "Questão %d Resposta: %c;", numeroQuestao, opcao);
+    fprintf(arquivo, "Questão %d; Resposta:; %c;\n", numeroQuestao, opcao);
     printf("\n");
 }
 
@@ -79,27 +72,26 @@ int main()
 
     for (int i = 0; i < NUM_PERGUNTAS; i++)
     {
-
-        printf("Bem-vindo ao Museu Multitemático!!!\n");
-    printf("   ______________________________  \n");
-    printf("  /                             /\\ \n");
-    printf(" /_____________________________/  \\ \n");
-    printf("|                              |   |\n");
-    printf("|  [ ]                    [ ]  |   |\n");
-    printf("|              [ ]             |   |\n");
-    printf("|  [ ]                    [ ]  |   |\n");
-    printf("|              [ ]             |   |\n");
-    printf("|  [ ]                    [ ]  |   |\n");
-    printf("|______________________________|   |\n");
-    printf("|          MUSEU               |   |\n");
-    printf("|       MULTITEMATICO          |   |\n");
-    printf("|______________________________|   |\n");
-    printf("|          |    | |            |   |\n");
-    printf("|          |    | |            |   |\n");
-    printf("|__________|____|_|____________|___|\n\n");
-    apresentarPergunta(perguntas[i], arquivo, i + 1); // Adiciona 1 para tornar o número da questão baseado em 1
-    system("pause");
-    system("cls");
+        printf("Bem-vindo ao Museu Multitemático!!! \n");
+        printf("   ______________________________   \n");
+        printf("  /                             /\\ \n");
+        printf(" /_____________________________/  \\\n");
+        printf("|                              |   |\n");
+        printf("|  [ ]                    [ ]  |   |\n");
+        printf("|              [ ]             |   |\n");
+        printf("|  [ ]                    [ ]  |   |\n");
+        printf("|              [ ]             |   |\n");
+        printf("|  [ ]                    [ ]  |   |\n");
+        printf("|______________________________|   |\n");
+        printf("|          MUSEU               |   |\n");
+        printf("|       MULTITEMATICO          |   |\n");
+        printf("|______________________________|   |\n");
+        printf("|          |    | |            |   |\n");
+        printf("|          |    | |            |   |\n");
+        printf("|__________|____|_|____________|___|\n\n");
+        apresentarPergunta(perguntas[i], arquivo, i + 1);
+        system("pause");
+        system("cls");
     }
 
     // Adicionar uma quebra de linha no final de cada conjunto de respostas
