@@ -72,10 +72,12 @@ int vendas()
         scanf("%d", &opcao);
         if (opcao == 1)
         {
-            printf("Tem direito a meia?");
-            scanf(" %c", &meia); // Use %c para ler um caractere
+            // Verificação de direito à meia-entrada
+            printf("\nPossui direito à meia-entrada? Digite 's' se sim, ou qualquer outro caractere se não:");
+            scanf(" %c", &meia); // Utilize %c para ler um caractere
 
-            printf("Digite sua idade:\n");
+            // Coleta da idade do cliente
+            printf("\nDigite sua idade:");
             scanf("%d", &idade);
 
             if (idade <= 10)
@@ -107,10 +109,12 @@ int vendas()
         }
         else if (opcao == 2)
         {
-            printf("Tem direito a meia?");
-            scanf(" %c", &meia); // Use %c para ler um caractere
+            // Verificação de direito à meia-entrada
+            printf("\nPossui direito à meia-entrada? Digite 's' se sim, ou qualquer outro caractere se não:");
+            scanf(" %c", &meia); // Utilize %c para ler um caractere
 
-            printf("Digite sua idade:\n");
+            // Coleta da idade do cliente
+            printf("\nDigite sua idade:");
             scanf("%d", &idade);
 
             if (idade <= 10)
@@ -142,10 +146,12 @@ int vendas()
         else if (opcao == 3)
         {
 
-            printf("Tem direito a meia?");
-            scanf(" %c", &meia); // Use %c para ler um caractere
+            // Verificação de direito à meia-entrada
+            printf("\nPossui direito à meia-entrada? Digite 's' se sim, ou qualquer outro caractere se não:");
+            scanf(" %c", &meia); // Utilize %c para ler um caractere
 
-            printf("Digite sua idade:\n");
+            // Coleta da idade do cliente
+            printf("\nDigite sua idade:");
             scanf("%d", &idade);
 
             if (idade <= 10)
@@ -176,10 +182,12 @@ int vendas()
         }
         else if (opcao == 4)
         {
-            printf("Tem direito a meia?");
-            scanf(" %c", &meia); // Use %c para ler um caractere
+            // Verificação de direito à meia-entrada
+            printf("\nPossui direito à meia-entrada? Digite 's' se sim, ou qualquer outro caractere se não:");
+            scanf(" %c", &meia); // Utilize %c para ler um caractere
 
-            printf("Digite sua idade:\n");
+            // Coleta da idade do cliente
+            printf("\nDigite sua idade:");
             scanf("%d", &idade);
 
             if (idade <= 10)
@@ -214,7 +222,7 @@ int vendas()
         }
         else if (opcao == 10)
         {
-            
+
 // Cancelar a última venda
 
             if (ultima_venda_opcao == 1)
@@ -332,7 +340,7 @@ int vendas()
     printf("Entradas para Jogos Olímpicos Paris 2024: %d\n", Ejogos);
     printf("Entradas para 100 anos da Semana de Arte Moderna: %d\n", Earte);
     printf("Entradas para História do real ao bitcoin: %d\n", Ebit);
-    printf("Total Arrecadado: R$ %.2f\n", total_arrecadado);
+    printf("Total Arrecadado Aproximado: R$ %.2f\n", total_arrecadado);
     FILE *csv_file = fopen("relatorio_vendas.csv", "a");
     if (csv_file == NULL)
     {
@@ -344,6 +352,7 @@ int vendas()
     fprintf(csv_file, "Jogos Olímpicos Paris 2024; Pessoas: %d; Dinheiro: R$ %.2f\n", Ejogos, Ejogos * Pjogos);
     fprintf(csv_file, "100 anos da Semana de Arte Moderna; Pessoas: %d; Dinheiro: R$ %.2f\n", Earte, Earte * Parte);
     fprintf(csv_file, "História do real ao bitcoin; Pessoas: %d; Dinheiro: R$ %.2f\n", Ebit, Ebit * Pbit);
+    fprintf(csv_file, "Total Arrecadado Aproximado:; R$ %.2f\n", total_arrecadado);
     fclose(csv_file);
     printf("Dados exportados para o arquivo 'relatorio_vendas.csv'.\n");
     return 0;
