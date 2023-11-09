@@ -24,9 +24,9 @@ int main()
     csv_file = fopen("relatorio_vendas.csv", "a"); //Arquivo CSV
     binario_file = fopen("relatorio_vendas.bin", "ab"); //Arquivo binario
 
-    if (csv_file == NULL)
+    if (csv_file == NULL && binario_file == NULL)
     {
-        printf("Erro ao criar o arquivo CSV.\n");
+        printf("Erro ao criar o arquivo CSV e BIN.\n");
     }
     else
     {
@@ -41,6 +41,7 @@ int main()
     }
 
     fclose(csv_file);
+    fclose(binario_file);
 
     return 4;
 }
@@ -48,6 +49,7 @@ int main()
 int vendas()
 {
     extern FILE *csv_file;
+    extern FILE *binario_file;
     setlocale(LC_ALL, "portuguese");
     int Esanto = 0, Ejogos = 0, Earte = 0, Ebit = 0;
     int inteiras = 0, meias = 0, isentas = 0;
