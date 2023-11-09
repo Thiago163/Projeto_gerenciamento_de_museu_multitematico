@@ -38,6 +38,7 @@ int vendas()
     int ultima_venda_opcao = 0; // Armazena a opção da última venda
     int idade;
     char meia;
+    float Dsanto = 0.0, Djogos = 0.0, Darte = 0.0, Dbit = 0.0;  // Declare as variáveis aqui
 
     printf("Bem-vindo ao Museu Multitemático!!!\n");
     printf("   ______________________________  \n");
@@ -92,6 +93,7 @@ int vendas()
                 // Entrada meia
                 Esanto++;
                 total_arrecadado += Psanto / 2.0; // Meia entrada
+                Dsanto += Psanto / 2.0;
                 opcao_anterior = 1;
                 printf("\nCompra efetuada com meia entrada\n");
             }
@@ -99,6 +101,7 @@ int vendas()
             {
                 Esanto++;
                 total_arrecadado += Psanto;
+                Dsanto += Psanto;
                 opcao_anterior = 1;
                 printf("\nCompra efetuada\n");
             }
@@ -129,6 +132,7 @@ int vendas()
                 // Entrada meia
                 Ejogos++;
                 total_arrecadado += Pjogos / 2.0; // Meia entrada
+                Djogos += Pjogos / 2.0;
                 opcao_anterior = 1;
                 printf("\nCompra efetuada com meia entrada\n");
             }
@@ -136,6 +140,7 @@ int vendas()
             {
                 Ejogos++;
                 total_arrecadado += Pjogos;
+                Djogos += Pjogos;
                 opcao_anterior = 1;
                 printf("\nCompra efetuada\n");
             }
@@ -166,6 +171,7 @@ int vendas()
                 // Entrada meia
                 Earte++;
                 total_arrecadado += Parte / 2.0; // Meia entrada
+                Darte += Parte / 2.0;
                 opcao_anterior = 1;
                 printf("\nCompra efetuada com meia entrada\n");
             }
@@ -173,6 +179,7 @@ int vendas()
             {
                 Earte++;
                 total_arrecadado += Parte;
+                Darte += Parte;
                 opcao_anterior = 1;
                 printf("\nCompra efetuada\n");
             }
@@ -202,6 +209,7 @@ int vendas()
                 // Entrada meia
                 Ebit++;
                 total_arrecadado += Pbit / 2.0; // Meia entrada
+                Dbit += Pbit / 2.0;
                 opcao_anterior = 1;
                 printf("\nCompra efetuada com meia entrada\n");
             }
@@ -209,6 +217,7 @@ int vendas()
             {
                 Ebit++;
                 total_arrecadado += Psanto;
+                Dbit += Pbit;
                 opcao_anterior = 1;
                 printf("\nCompra efetuada\n");
             }
@@ -239,12 +248,14 @@ int vendas()
                     // Se a entrada era meia, subtrai do total_arrecadado
                     Esanto--;
                     total_arrecadado -= (Psanto / 2);
+                    Dsanto -= Psanto / 2.0;
                     printf("\nVenda cancelada (meia entrada)\n");
                 }
                 else
                 {
                     Esanto--;
                     total_arrecadado -= Psanto;
+                    Dsanto -= Psanto;
                     printf("\nVenda cancelada\n");
                 }
                 system("pause");
@@ -263,12 +274,14 @@ int vendas()
                     // Se a entrada era meia, subtrai do total_arrecadado
                     Ejogos--;
                     total_arrecadado -= (Pjogos / 2);
+                    Djogos -= Pjogos / 2.0;
                     printf("\nVenda cancelada (meia entrada)\n");
                 }
                 else
                 {
                     Ejogos--;
                     total_arrecadado -= Pjogos;
+                    Djogos -= Pjogos;
                     printf("\nVenda cancelada\n");
                 }
                 system("pause");
@@ -287,12 +300,14 @@ int vendas()
                     // Se a entrada era meia, subtrai do total_arrecadado
                     Earte--;
                     total_arrecadado -= (Parte / 2);
+                    Darte -= Parte / 2.0;
                     printf("\nVenda cancelada (meia entrada)\n");
                 }
                 else
                 {
                     Earte--;
                     total_arrecadado -= Parte;
+                    Darte -= Parte;
                     printf("\nVenda cancelada\n");
                 }
                 system("pause");
@@ -349,10 +364,10 @@ int vendas()
         return 1;
     }
     fprintf(csv_file, "\nTEMA EXPOSIÇÃO; ENTRADAS; VALOR TOTAL\n");
-    fprintf(csv_file, "Santos Dumont; Pessoas: %d; Dinheiro: R$ %.2f\n", Esanto, Esanto * Psanto);
-    fprintf(csv_file, "Jogos Olímpicos Paris 2024; Pessoas: %d; Dinheiro: R$ %.2f\n", Ejogos, Ejogos * Pjogos);
-    fprintf(csv_file, "100 anos da Semana de Arte Moderna; Pessoas: %d; Dinheiro: R$ %.2f\n", Earte, Earte * Parte);
-    fprintf(csv_file, "História do real ao bitcoin; Pessoas: %d; Dinheiro: R$ %.2f\n", Ebit, Ebit * Pbit);
+    fprintf(csv_file, "Santos Dumont; Pessoas: %d; Dinheiro: R$ %.2f\n", Esanto, Dsanto);
+    fprintf(csv_file, "Jogos Olímpicos Paris 2024; Pessoas: %d; Dinheiro: R$ %.2f\n", Ejogos, Djogos);
+    fprintf(csv_file, "100 anos da Semana de Arte Moderna; Pessoas: %d; Dinheiro: R$ %.2f\n", Earte, Darte);
+    fprintf(csv_file, "História do real ao bitcoin; Pessoas: %d; Dinheiro: R$ %.2f\n", Ebit, Dbit);
     fprintf(csv_file, "Total Arrecadado Aproximado:; R$ %.2f\n", total_arrecadado);
     fclose(csv_file);
     printf("Dados exportados para o arquivo 'relatorio_vendas.csv'.\n");
