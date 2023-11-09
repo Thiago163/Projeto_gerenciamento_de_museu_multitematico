@@ -9,29 +9,43 @@
 #define Pbit 30.0
 #define SENHA_CORRETA "banana"
 
+FILE *csv_file; // Declaração global
 int vendas();
 int main();
 
 int main()
 {
+    FILE *csv_file = fopen("relatorio_vendas.csv", "a");
     char senha[20];
     printf("Digite a senha:\n");
     scanf("%s", senha);
 
-    if (strcmp(senha, SENHA_CORRETA) == 0)
+    csv_file = fopen("relatorio_vendas.csv", "a"); // Inicialize a variável aqui
+
+    if (csv_file == NULL)
     {
-        vendas();
+        printf("Erro ao criar o arquivo CSV.\n");
     }
     else
     {
-        printf("Acesso negado\n");
+        if (strcmp(senha, SENHA_CORRETA) == 0)
+        {
+            vendas();
+        }
+        else
+        {
+            printf("Acesso negado\n");
+        }
     }
+
+    fclose(csv_file); // Não se esqueça de fechar o arquivo quando não precisar mais
 
     return 4;
 }
 
 int vendas()
 {
+    extern FILE *csv_file;
     setlocale(LC_ALL, "portuguese");
     int Esanto = 0, Ejogos = 0, Earte = 0, Ebit = 0;
     float total_arrecadado = 0.0;
@@ -216,7 +230,7 @@ int vendas()
             else
             {
                 Ebit++;
-                total_arrecadado += Psanto;
+                total_arrecadado += Pbit;
                 Dbit += Pbit;
                 opcao_anterior = 1;
                 printf("\nCompra efetuada\n");
@@ -326,12 +340,14 @@ int vendas()
                     // Se a entrada era meia, subtrai do total_arrecadado
                     Ebit--;
                     total_arrecadado -= (Pbit / 2);
+                    Dbit -= Pbit / 2.0;
                     printf("\nVenda cancelada (meia entrada)\n");
                 }
                 else
                 {
                     Ebit--;
                     total_arrecadado -= Pbit;
+                    Dbit -= Pbit;
                     printf("\nVenda cancelada\n");
                 }
                 system("pause");
@@ -357,7 +373,7 @@ int vendas()
     printf("Entradas para 100 anos da Semana de Arte Moderna: %d\n", Earte);
     printf("Entradas para História do real ao bitcoin: %d\n", Ebit);
     printf("Total Arrecadado Aproximado: R$ %.2f\n", total_arrecadado);
-    FILE *csv_file = fopen("relatorio_vendas.csv", "a");
+    csv_file = fopen("relatorio_vendas.csv", "a");
     if (csv_file == NULL)
     {
         printf("Erro ao criar o arquivo CSV.\n");
