@@ -40,7 +40,7 @@ int main()
         }
     }
 
-    fclose(csv_file); // Não se esqueça de fechar o arquivo quando não precisar mais
+    fclose(csv_file);
 
     return 4;
 }
