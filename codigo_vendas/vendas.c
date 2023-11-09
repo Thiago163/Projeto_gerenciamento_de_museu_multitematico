@@ -48,10 +48,11 @@ int vendas()
     extern FILE *csv_file;
     setlocale(LC_ALL, "portuguese");
     int Esanto = 0, Ejogos = 0, Earte = 0, Ebit = 0;
-    float total_arrecadado = 0.0;
+    int inteiras = 0, meias = 0, isentas = 0;
     int ultima_venda_opcao = 0; // Armazena a opção da última venda
     int idade;
     char meia;
+    float total_arrecadado = 0.0;
     float Dsanto = 0.0, Djogos = 0.0, Darte = 0.0, Dbit = 0.0;  // Declare as variáveis aqui
 
     printf("Bem-vindo ao Museu Multitemático!!!\n");
@@ -99,13 +100,15 @@ int vendas()
             if (idade <= 10)
             {
                 Esanto++;
+                isentas++;
                 opcao_anterior = 1;
-                printf("\nIsento\n"); // Corrigindo o caractere de escape
+                printf("\nIsento\n");
             }
             else if (meia == 's' || meia == 'S') // Use == para comparação, não =
             {
                 // Entrada meia
                 Esanto++;
+                meias++;
                 total_arrecadado += Psanto / 2.0; // Meia entrada
                 Dsanto += Psanto / 2.0;
                 opcao_anterior = 1;
@@ -114,6 +117,7 @@ int vendas()
             else
             {
                 Esanto++;
+                inteiras++;
                 total_arrecadado += Psanto;
                 Dsanto += Psanto;
                 opcao_anterior = 1;
@@ -138,13 +142,15 @@ int vendas()
             if (idade <= 10)
             {
                 Ejogos++;
+                isentas++;
                 opcao_anterior = 1;
-                printf("\nIsento\n"); // Corrigindo o caractere de escape
+                printf("\nIsento\n");
             }
             else if (meia == 's' || meia == 'S') // Use == para comparação, não =
             {
                 // Entrada meia
                 Ejogos++;
+                meias++;
                 total_arrecadado += Pjogos / 2.0; // Meia entrada
                 Djogos += Pjogos / 2.0;
                 opcao_anterior = 1;
@@ -153,6 +159,7 @@ int vendas()
             else
             {
                 Ejogos++;
+                inteiras++;
                 total_arrecadado += Pjogos;
                 Djogos += Pjogos;
                 opcao_anterior = 1;
@@ -177,6 +184,7 @@ int vendas()
             if (idade <= 10)
             {
                 Earte++;
+                isentas++;
                 opcao_anterior = 1;
                 printf("\nIsento\n"); // Corrigindo o caractere de escape
             }
@@ -184,6 +192,7 @@ int vendas()
             {
                 // Entrada meia
                 Earte++;
+                meias++;
                 total_arrecadado += Parte / 2.0; // Meia entrada
                 Darte += Parte / 2.0;
                 opcao_anterior = 1;
@@ -192,6 +201,7 @@ int vendas()
             else
             {
                 Earte++;
+                inteiras++;
                 total_arrecadado += Parte;
                 Darte += Parte;
                 opcao_anterior = 1;
@@ -215,6 +225,7 @@ int vendas()
             if (idade <= 10)
             {
                 Ebit++;
+                isentas++;
                 opcao_anterior = 1;
                 printf("\nIsento\n"); // Corrigindo o caractere de escape
             }
@@ -222,6 +233,7 @@ int vendas()
             {
                 // Entrada meia
                 Ebit++;
+                meias++;
                 total_arrecadado += Pbit / 2.0; // Meia entrada
                 Dbit += Pbit / 2.0;
                 opcao_anterior = 1;
@@ -230,6 +242,7 @@ int vendas()
             else
             {
                 Ebit++;
+                inteiras++;
                 total_arrecadado += Pbit;
                 Dbit += Pbit;
                 opcao_anterior = 1;
@@ -255,12 +268,14 @@ int vendas()
                 {
                     // Se a entrada era isenta, não subtrai do total_arrecadado
                     Esanto--;
+                    isentas--;
                     printf("\nVenda cancelada (entrada isenta)\n");
                 }
                 else if (opcao_anterior == 1)
                 {
                     // Se a entrada era meia, subtrai do total_arrecadado
                     Esanto--;
+                    meias--;
                     total_arrecadado -= (Psanto / 2);
                     Dsanto -= Psanto / 2.0;
                     printf("\nVenda cancelada (meia entrada)\n");
@@ -268,6 +283,7 @@ int vendas()
                 else
                 {
                     Esanto--;
+                    inteiras--;
                     total_arrecadado -= Psanto;
                     Dsanto -= Psanto;
                     printf("\nVenda cancelada\n");
@@ -281,12 +297,14 @@ int vendas()
                 {
                     // Se a entrada era isenta, não subtrai do total_arrecadado
                     Ejogos--;
+                    isentas--;
                     printf("\nVenda cancelada (entrada isenta)\n");
                 }
                 else if (opcao_anterior == 1)
                 {
                     // Se a entrada era meia, subtrai do total_arrecadado
                     Ejogos--;
+                    meias--;
                     total_arrecadado -= (Pjogos / 2);
                     Djogos -= Pjogos / 2.0;
                     printf("\nVenda cancelada (meia entrada)\n");
@@ -294,6 +312,7 @@ int vendas()
                 else
                 {
                     Ejogos--;
+                    inteiras--;
                     total_arrecadado -= Pjogos;
                     Djogos -= Pjogos;
                     printf("\nVenda cancelada\n");
@@ -307,12 +326,14 @@ int vendas()
                 {
                     // Se a entrada era isenta, não subtrai do total_arrecadado
                     Earte--;
+                    isentas--;
                     printf("\nVenda cancelada (entrada isenta)\n");
                 }
                 else if (opcao_anterior == 1)
                 {
                     // Se a entrada era meia, subtrai do total_arrecadado
                     Earte--;
+                    meias--;
                     total_arrecadado -= (Parte / 2);
                     Darte -= Parte / 2.0;
                     printf("\nVenda cancelada (meia entrada)\n");
@@ -320,6 +341,7 @@ int vendas()
                 else
                 {
                     Earte--;
+                    inteiras--;
                     total_arrecadado -= Parte;
                     Darte -= Parte;
                     printf("\nVenda cancelada\n");
@@ -333,12 +355,14 @@ int vendas()
                 {
                     // Se a entrada era isenta, não subtrai do total_arrecadado
                     Ebit--;
+                    isentas--;
                     printf("\nVenda cancelada (entrada isenta)\n");
                 }
                 else if (opcao_anterior == 1)
                 {
                     // Se a entrada era meia, subtrai do total_arrecadado
                     Ebit--;
+                    meias--;
                     total_arrecadado -= (Pbit / 2);
                     Dbit -= Pbit / 2.0;
                     printf("\nVenda cancelada (meia entrada)\n");
@@ -346,6 +370,7 @@ int vendas()
                 else
                 {
                     Ebit--;
+                    inteiras--;
                     total_arrecadado -= Pbit;
                     Dbit -= Pbit;
                     printf("\nVenda cancelada\n");
@@ -373,6 +398,7 @@ int vendas()
     printf("Entradas para 100 anos da Semana de Arte Moderna: %d\n", Earte);
     printf("Entradas para História do real ao bitcoin: %d\n", Ebit);
     printf("Total Arrecadado Aproximado: R$ %.2f\n", total_arrecadado);
+    printf("inteiras: %d meias: %d isentas: %d\n", inteiras, meias, isentas);
     csv_file = fopen("relatorio_vendas.csv", "a");
     if (csv_file == NULL)
     {
@@ -385,6 +411,7 @@ int vendas()
     fprintf(csv_file, "100 anos da Semana de Arte Moderna; Pessoas: %d; Dinheiro: R$ %.2f\n", Earte, Darte);
     fprintf(csv_file, "História do real ao bitcoin; Pessoas: %d; Dinheiro: R$ %.2f\n", Ebit, Dbit);
     fprintf(csv_file, "Total Arrecadado Aproximado:; R$ %.2f\n", total_arrecadado);
+    fprintf(csv_file, "inteiras: %d; meias: %d; isentas: %d\n\n", inteiras, meias, isentas);
     fclose(csv_file);
     printf("Dados exportados para o arquivo 'relatorio_vendas.csv'.\n");
     return 0;
