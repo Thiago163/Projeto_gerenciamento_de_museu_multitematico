@@ -144,7 +144,18 @@ int main()
         fclose(binario);
         fclose(perguntasFile);
 
-        printf("Respostas salvas com sucesso no arquivo respostas.csv\n");
+        system("cls");
+        printf("\nDados exportados para o arquivo 'relatorio_vendas.csv' e 'relatorio_vendas.bin'.\n\n");
+        printf("  ****  ****  \n");
+        printf(" ****** ***** \n");
+        printf("  *********** \n");
+        printf("   *********  \n");
+        printf("    *******   \n");
+        printf("     *****    \n");
+        printf("      ***     \n");
+        printf("       *      \n\n");
+        system("pause");
+        system("cls");
 
     } while (1);
 
