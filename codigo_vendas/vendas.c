@@ -148,7 +148,7 @@ int vendas()
                 opcao_anterior = 1;
                 printf("\nIsento\n");
             }
-            else if (meia == 's' || meia == 'S') // Use == para comparação, não =
+            else if (meia == 's' || meia == 'S')
             {
                 // Entrada meia
                 Ejogos++;
@@ -177,7 +177,7 @@ int vendas()
 
             // Verificação de direito à meia-entrada
             printf("\nPossui direito à meia-entrada? Digite 's' se sim, ou qualquer outro caractere se não:");
-            scanf(" %c", &meia); // Utilize %c para ler um caractere
+            scanf(" %c", &meia);
 
             // Coleta da idade do cliente
             printf("\nDigite sua idade:");
@@ -188,9 +188,9 @@ int vendas()
                 Earte++;
                 isentas++;
                 opcao_anterior = 1;
-                printf("\nIsento\n"); // Corrigindo o caractere de escape
+                printf("\nIsento\n");
             }
-            else if (meia == 's' || meia == 'S') // Use == para comparação, não =
+            else if (meia == 's' || meia == 'S')
             {
                 // Entrada meia
                 Earte++;
@@ -218,7 +218,7 @@ int vendas()
         {
             // Verificação de direito à meia-entrada
             printf("\nPossui direito à meia-entrada? Digite 's' se sim, ou qualquer outro caractere se não:");
-            scanf(" %c", &meia); // Utilize %c para ler um caractere
+            scanf(" %c", &meia);
 
             // Coleta da idade do cliente
             printf("\nDigite sua idade:");
@@ -229,9 +229,9 @@ int vendas()
                 Ebit++;
                 isentas++;
                 opcao_anterior = 1;
-                printf("\nIsento\n"); // Corrigindo o caractere de escape
+                printf("\nIsento\n");
             }
-            else if (meia == 's' || meia == 'S') // Use == para comparação, não =
+            else if (meia == 's' || meia == 'S')
             {
                 // Entrada meia
                 Ebit++;
@@ -433,6 +433,15 @@ int vendas()
     fwrite(&meias, sizeof(int), 1, binario_file);
     fwrite(&isentas, sizeof(int), 1, binario_file);
     fclose(binario_file);
-    printf("Dados exportados para o arquivo 'relatorio_vendas.csv'.\n");
+    printf("\nDados exportados para o arquivo 'relatorio_vendas.csv' e 'relatorio_vendas.bin'.\n\n");
+    printf("  ****  ****  \n");
+    printf(" ****** ***** \n");
+    printf("  *********** \n");
+    printf("   *********  \n");
+    printf("    *******   \n");
+    printf("     *****    \n");
+    printf("      ***     \n");
+    printf("       *      \n");
+
     return 0;
 }
