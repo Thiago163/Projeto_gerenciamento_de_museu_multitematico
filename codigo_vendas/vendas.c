@@ -1,23 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include <string.h>
 
 #define Psanto 10.0
 #define Pjogos 15.0
 #define Parte 20.0
 #define Pbit 30.0
-#define SENHA_CORRETA 2023
+#define SENHA_CORRETA "banana"
 
 int vendas();
 int main();
 
 int main()
 {
-    int senha;
-    printf("Digite a senha\n");
-    scanf("%d", &senha);
+    char senha[20];
+    printf("Digite a senha:\n");
+    scanf("%s", senha);
 
-    if (senha == SENHA_CORRETA)
+    if (strcmp(senha, SENHA_CORRETA) == 0)
     {
         vendas();
     }
