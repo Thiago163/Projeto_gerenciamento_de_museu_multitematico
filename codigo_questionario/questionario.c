@@ -7,6 +7,7 @@
 #define MAX_CHAR 100
 #define NUM_PERGUNTAS 8
 #define TAM 900
+#define SENHA_CORRETA "banana"
 
 typedef struct
 {
@@ -48,7 +49,7 @@ void apresentarPergunta(Pergunta pergunta, FILE *arquivo, FILE *binario, int num
             scanf("%s", senha);
 
             // Verificar a senha
-            if (strcmp(senha, "banana") == 0)
+            if (strcmp(senha, SENHA_CORRETA) == 0)
             {
                 exit(0); // Encerrar o programa
             }
