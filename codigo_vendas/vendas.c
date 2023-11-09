@@ -10,6 +10,7 @@
 #define SENHA_CORRETA "banana"
 
 FILE *csv_file; // Declaração global
+FILE *binario_file; // Declaração global
 int vendas();
 int main();
 
@@ -20,7 +21,8 @@ int main()
     printf("Digite a senha:\n");
     scanf("%s", senha);
 
-    csv_file = fopen("relatorio_vendas.csv", "a"); // Inicialize a variável aqui
+    csv_file = fopen("relatorio_vendas.csv", "a"); //Arquivo CSV
+    binario_file = fopen("relatorio_vendas.bin", "ab"); //Arquivo binario
 
     if (csv_file == NULL)
     {
@@ -411,8 +413,26 @@ int vendas()
     fprintf(csv_file, "100 anos da Semana de Arte Moderna; Pessoas: %d; Dinheiro: R$ %.2f\n", Earte, Darte);
     fprintf(csv_file, "História do real ao bitcoin; Pessoas: %d; Dinheiro: R$ %.2f\n", Ebit, Dbit);
     fprintf(csv_file, "Total Arrecadado Aproximado:; R$ %.2f\n", total_arrecadado);
-    fprintf(csv_file, "inteiras: %d; meias: %d; isentas: %d\n\n", inteiras, meias, isentas);
+    fprintf(csv_file, "inteiras: %d; meias: %d; isentas: %d\n", inteiras, meias, isentas);
     fclose(csv_file);
+    if (binario_file == NULL)
+    {
+        printf("Erro ao criar o arquivo CSV.\n");
+        return 1;
+    }
+    fwrite(&Esanto, sizeof(int), 1, binario_file);
+    fwrite(&Ejogos, sizeof(int), 1, binario_file);
+    fwrite(&Earte, sizeof(int), 1, binario_file);
+    fwrite(&Ebit, sizeof(int), 1, binario_file);
+    fwrite(&Dsanto, sizeof(float), 1, binario_file);
+    fwrite(&Djogos, sizeof(float), 1, binario_file);
+    fwrite(&Darte, sizeof(float), 1, binario_file);
+    fwrite(&Dbit, sizeof(float), 1, binario_file);
+    fwrite(&total_arrecadado, sizeof(float), 1, binario_file);
+    fwrite(&inteiras, sizeof(int), 1, binario_file);
+    fwrite(&meias, sizeof(int), 1, binario_file);
+    fwrite(&isentas, sizeof(int), 1, binario_file);
+    fclose(binario_file);
     printf("Dados exportados para o arquivo 'relatorio_vendas.csv'.\n");
     return 0;
 }
